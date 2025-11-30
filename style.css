@@ -1,0 +1,232 @@
+:root {
+    --button-backgroud-color: #333;
+    --button-color: #EEE;
+    --button-hover-back-color: #444;
+    --input-border-radius: 10px;
+    --input-padding: 10px;
+    --input-margin: 4px;
+    --input-min-width: 100px;
+    --input-border: none;
+    --body-background-color: #333;
+    --header-background-color: #121212;
+    --canvas-background-color: white;
+
+    --pop-in-animation-color-10-precent: rgb(34, 21, 145);
+    --pop-in-animation-color-30-precent: rgb(34, 21, 145);
+    --pop-in-animation-color-50-precent: rgb(88, 79, 209);
+    --pop-in-animation-color-70-precent: rgb(106, 189, 88);
+    --pop-in-animation-color-90-precent: rgb(101, 231, 220);
+    --pop-in-animation-color-100-precent: rgb(136, 196, 216);
+
+}
+
+body {
+    background: var(--body-background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0%;
+}
+
+h1 {
+    text-align: left;
+    margin: 2%;
+    margin-right: 5%;
+    white-space: nowrap;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+#canvas-container {
+    display: grid;
+    margin: 0px auto;
+    width: 100%;
+    height: 80dvh;
+    background-color: var(--canvas-background-color);
+}
+
+.cell {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ccc;
+    background: var(--canvas-background-color);
+    box-sizing: border-box;
+}
+
+.start,
+.end {
+    text-align: center;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bolder !important;
+}
+
+i {
+    width: 100%;
+    height: 100%;
+}
+
+.wall {
+    border: 1px solid black;
+    background: black;
+}
+
+.selected-cell {
+    will-change: border-radius, transform, background-color;
+    animation: pop-in .4s ease-in .5s;
+}
+
+.visited {
+    will-change: border-radius, transform, background-color;
+    animation: pop-in .5s ease-in .5s;
+    animation-fill-mode: forwards;
+}
+
+.path {
+    background: yellow;
+}
+
+@keyframes pop-in {
+
+    0% {
+        transform: scale(.5);
+        border-radius: 50%;
+        background: rgb(34, 21, 145);
+    }
+
+    30% {
+        transform: scale(.7);
+        border-radius: 50%;
+        background: rgb(34, 21, 145);
+    }
+
+    50% {
+        transform: scale(1.2);
+        border-radius: 40%;
+        background: rgb(88, 79, 209);
+    }
+
+    70% {
+        transform: scale(1.1);
+        border-radius: 40%;
+        background: rgb(106, 189, 88);
+    }
+
+    90% {
+        border-radius: 10%;
+        background: rgb(101, 231, 220);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        background: rgb(136, 196, 216);
+    }
+
+}
+
+.header-background {
+    display: flex;
+    justify-content: center;
+    background-color: var(--header-background-color);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    margin: 0%;
+
+    background-color: var(--header-background-color);
+}
+
+.buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+button {
+    background-color: var(--button-backgroud-color);
+    color: var(--button-color);
+    border: var(--input-border);
+    padding: var(--input-padding);
+    border-radius: var(--input-border-radius);
+    cursor: pointer;
+    margin: var(--input-margin);
+    min-width: var(--input-min-width);
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+button:disabled,
+select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:hover {
+    background-color: var(--button-hover-back-color);
+}
+
+input,
+select {
+    background-color: var(--button-backgroud-color);
+    color: var(--button-color);
+    border-radius: var(--input-border-radius);
+    padding: var(--input-padding);
+    margin: var(--input-margin);
+    min-width: var(--input-min-width);
+    border: var(--input-border);
+
+}
+
+
+/* notification bar */
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+
+    position: absolute;
+    top: 2px;
+    border-radius: var(--input-border-radius);
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+@media only screen and (min-width: 1300px) {
+
+    .header-container {
+        width: 1300px;
+    }
+
+    #canvas-container {
+        max-width: 1300px;
+    }
+
+}
+
+@media (max-width: 570px) {
+
+    .header-container {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+}

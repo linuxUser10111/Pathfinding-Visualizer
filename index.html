@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pathfinding Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header-background">
+            <div class="header-container">
+                <h1 id="title">Pathfinding Visualizer</h1>
+
+                <div class="buttons-container">
+                    <button id="start-button" onclick="setMode('start')">Set Start</button>
+                    <button id="end-button" onclick="setMode('end')">Set End</button>
+                    <button id="add-wall-button" onclick="setMode('wall')">Add Walls</button>
+
+                    <select name="seachingFunc" id="seachingFunc" onchange="changeSearchFunction();">
+                        <option value="">Function</option>
+                        <option value="dijkstra">Dijkstra</option>
+                        <option value="aStar">A*</option>
+                        <option value="bfs">BFS</option>
+                        <option value="dfs">DFS</option>
+                    </select>
+
+                    <button id="run-button" onclick="run()">Run</button>
+                    <button id="reset-button" onclick="resetGrid()">Reset</button>
+                    <button id="generate-grid-button" onclick="autoGenerateMaze()">Generate</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="canvas-container" id="canvas-container">
+
+        </div>
+
+    </div>
+
+
+    <div class="alert" id="alert" style="display: none;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <span id="alertContent"><strong>Danger!</strong> Array is already sorted!</span>
+    </div>
+
+    <script type="module">
+        import { resetGrid, run, setMode, createGrid, autoGenerateMaze, changeSearchFunction } from "./scripts/index.js";
+        window.resetGrid = resetGrid;
+        window.run = run;
+        window.setMode = setMode;
+        window.createGrid = createGrid;
+        window.autoGenerateMaze = autoGenerateMaze;
+        window.changeSearchFunction = changeSearchFunction;
+
+        createGrid();
+
+    </script>
+
+</body>
+
+</html>
